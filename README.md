@@ -2,7 +2,7 @@
 
 Hello World!
 
-We are Team Simba, a group of four enthusiastic and motivated hackers ready to make the most of MCHacks 2024.
+We are Team Simba, a group of four enthusiastic and motivated hackers ready to make the most of McHacks 2024.
 
 ## Idea:
 
