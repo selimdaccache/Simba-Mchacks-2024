@@ -1,0 +1,63 @@
+<div class="wrap-login100">
+    <div class="login100-pic js-tilt" data-tilt>
+        <img src="images/img-01.png" alt="IMG">
+    </div>
+
+    <div class="login100-form">
+        <span class="login100-form-title">
+            What service are you looking for?
+        </span>
+
+        <!-- Buttons for Service Selection -->
+        <div class="container-login100-form-btn">
+            <button type="button" class="login100-form-btn" onclick="showOptions('sports')">Sports</button>
+        </div>
+        <div class="container-login100-form-btn">
+            <button type="button" class="login100-form-btn" onclick="showOptions('education')">Education</button>
+        </div>
+        <div class="container-login100-form-btn">
+            <button type="button" class="login100-form-btn" onclick="showOptions('academic')">Academic</button>
+        </div>
+
+        <!-- Dropdowns for each service -->
+        <div id="sportsOptions" class="options" style="display:none;">
+            <select class="input100">
+                <option value="">Select a Sport</option>
+                <option value="football">Football</option>
+                <option value="basketball">Basketball</option>
+                <option value="tennis">Tennis</option>
+                <option value="volleyball">Volleyball</option>
+            </select>
+        </div>
+        <div id="educationOptions" class="options" style="display:none;">
+            <select class="input100">
+                <option value="">Select a Subject</option>
+                <option value="math">Math</option>
+                <option value="science">Science</option>
+                <option value="history">History</option>
+                <!-- Add more subjects as needed -->
+            </select>
+        </div>
+        <div id="academicOptions" class="options" style="display:none;">
+            <select class="input100">
+                <option value="">Select an Academic Service</option>
+                <option value="tutoring">Tutoring</option>
+                <option value="advising">Advising</option>
+                <option value="workshops">Workshops</option>
+                <!-- Add more academic services as needed -->
+            </select>
+        </div>
+    </div>
+</div>
+<script>
+    function showOptions(serviceType) {
+    // Hide all options
+    var options = document.getElementsByClassName('options');
+    for (var i = 0; i < options.length; i++) {
+        options[i].style.display = 'none';
+    }
+
+    // Show the selected option
+    document.getElementById(serviceType + 'Options').style.display = 'block';
+}
+</script>
