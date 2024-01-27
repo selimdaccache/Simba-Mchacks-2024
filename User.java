@@ -8,17 +8,19 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private String gender;
 
     // Default constructor
     public User() {
     }
 
     // Parameterized constructor
-    public User(Long id, String name, String email, String password) {
+    public User(Long id, String name, String email, String password, String gender) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.gender = gender;
     }
 
     // Getters and setters
@@ -54,6 +56,14 @@ public class User {
         this.password = password;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     // Optionally, override the toString method for easy printing of user info
     @Override
     public String toString() {
@@ -62,6 +72,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", gender='" + gender + '\'' +
                 '}';
     }
 
@@ -80,6 +91,8 @@ public class User {
         System.out.print("Enter password: ");
         newUser.setPassword(scanner.nextLine());
 
+        System.out.print("Enter gender: ");
+        newUser.setGender(scanner.nextLine());
         // Here, you might want to add logic to generate and set a unique user ID
         // newUser.setId(generatedId);
 

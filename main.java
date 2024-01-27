@@ -6,7 +6,7 @@ public class main {
 
         User newUser = User.createNewAccount(scanner);
 
-       // System.out.println("New user created: " + newUser);
+       //System.out.println("New user created: " + newUser);
 
         scanner.close();
     }
