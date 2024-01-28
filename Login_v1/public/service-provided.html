@@ -31,7 +31,7 @@
 
                 <div class="login100-form">
                     <span class="login100-form-title">
-                        What service are you looking for?
+                        What service can you provide in return?
                     </span>
 
                     <!-- Service Selection -->
@@ -87,18 +87,10 @@
                             <!-- Add more academic options -->
                         </select>
                     </div>
-                    <div class="container-login100-form-btn" style="text-align: center; padding-top: 20px;">
-                        <button id="nextPageButton" class="login100-form-btn">Next Page</button>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-   
-    
-    
-
 
     <!-- JavaScript for Dropdown Options -->
     <script>
@@ -118,11 +110,6 @@
             var musicService = document.getElementById("musicServiceSelection").value;
             document.getElementById("instrumentOptions").style.display = musicService === "tutoring" ? "block" : "none";
         }
-
-        document.getElementById("nextPageButton").onclick = function(){
-            window.location.href = 'service-provided.html'
-        };
-        
     </script>
     
     
