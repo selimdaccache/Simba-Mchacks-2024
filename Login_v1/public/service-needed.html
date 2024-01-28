@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login V1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->	
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+    </head>
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="images/img-01.png" alt="IMG">
+                </div>
+
+                <div class="login100-form">
+                    <span class="login100-form-title">
+                        What service are you looking for?
+                    </span>
+
+                    <!-- Service Selection -->
+                    <div class="wrap-input100">
+                        <select class="input100" id="serviceSelection" onchange="showServiceOptions()">
+                            <option value="">Select a Service</option>
+                            <option value="sports">Sports</option>
+                            <option value="music">Music</option>
+                            <option value="academic">Academic</option>
+                        </select>
+                    </div>
+
+                    <!-- Sports Dropdown -->
+                    <div class="wrap-input100" id="sportsOptions" style="display:none;">
+                        <select class="input100">
+                            <option value="">Select a Sport</option>
+                            <option value="football">Football</option>
+                            <option value="basketball">Basketball</option>
+                            <!-- Add more sports options -->
+                        </select>
+                    </div>
+
+                    <!-- Music Dropdown -->
+                    <div class="wrap-input100" id="musicOptions" style="display:none;">
+                        <select class="input100">
+                            <option value="">Select a Music Service</option>
+                            <option value="tutoring">Music Tutoring</option>
+                            <option value="instruments">Instrument Classes</option>
+                            <!-- Add more music options -->
+                        </select>
+                    </div>
+
+                    <!-- Academic Dropdown -->
+                    <div class="wrap-input100" id="academicOptions" style="display:none;">
+                        <select class="input100">
+                            <option value="">Select an Academic Service</option>
+                            <option value="tutoring">Tutoring</option>
+                            <option value="advising">Advising</option>
+                            <!-- Add more academic options -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Dropdown Options -->
+    <script>
+        function showServiceOptions() {
+            var service = document.getElementById("serviceSelection").value;
+            document.getElementById("sportsOptions").style.display = service === "sports" ? "block" : "none";
+            document.getElementById("musicOptions").style.display = service === "music" ? "block" : "none";
+            document.getElementById("academicOptions").style.display = service === "academic" ? "block" : "none";
+        }
+    </script>
+    
+    <!-- ... existing scripts ... -->
+</body>
+</html>
