@@ -77,6 +77,38 @@
 		</div>
 	</div>
 	
+
+	<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            "use strict";
+
+            // Add an event listener to the form submission
+            document.querySelector('.login100-form').addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent the default form submission behavior
+
+                // Retrieve email and password from the form
+                var email = document.getElementsByName('email')[0].value;
+                var password = document.getElementsByName('pass')[0].value;
+
+                // Retrieve users from localStorage
+                var users = JSON.parse(localStorage.getItem('users')) || [];
+
+                // Find the user by email and password (insecure for demonstration purposes)
+                var user = users.find(u => u.email === email && u.pass === password);
+
+                if (user) {
+                    alert('Login successful!');
+                    // Redirect to a new page (change the URL accordingly)
+					window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUjcmljayBhc3RsZXkgbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D';
+                } else {
+                    alert('Invalid credentials');
+                }
+            });
+
+            // ... (existing validation code remains unchanged)
+
+        });
+    </script>
 	
 
 	
