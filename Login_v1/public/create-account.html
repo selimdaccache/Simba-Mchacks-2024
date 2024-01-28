@@ -123,10 +123,10 @@
 
 	<script>
 		function signup() {
-			const name = document.getElementsByName("name")[0].value;
-			const mcgillId = document.getElementsByName("mcgillId")[0].value;
-			const email = document.getElementsByName("email")[0].value;
-			const pass = document.getElementsByName("pass")[0].value;
+			var name = document.getElementsByName("name")[0].value;
+			var mcgillId = document.getElementsByName("mcgillId")[0].value;
+			var email = document.getElementsByName("email")[0].value;
+			var pass = document.getElementsByName("pass")[0].value;
 	
 			// Validate if required fields are not empty
 			if (!name || !mcgillId || !email || !pass) {
@@ -135,8 +135,8 @@
 			}
 	
 			// Check if the email already exists
-			const users = JSON.parse(localStorage.getItem("users")) || [];
-			const existingUser = users.find(user => user.email === email);
+			var users = JSON.parse(localStorage.getItem("users")) || [];
+			var existingUser = users.find(user => user.email === email);
 	
 			if (existingUser) {
 				alert("An account with this email already exists. Please use a different email.");
@@ -151,7 +151,7 @@
 			localStorage.setItem("users", JSON.stringify(users));
 	
 			// Redirect to the login page (change the URL accordingly)
-			window.location.href = "index.html";
+			window.location.href = "landing.html";
 		}
 	</script>
 	
