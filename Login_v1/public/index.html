@@ -78,10 +78,9 @@
 	</div>
 	
 
-	<script>
+	<!-- <script>
         document.addEventListener('DOMContentLoaded', function () {
             "use strict";
-
             // Add an event listener to the form submission
             document.querySelector('.login100-form').addEventListener('submit', function (e) {
                 e.preventDefault(); // Prevent the default form submission behavior
@@ -105,11 +104,34 @@
 					alert('Invalid credentials');
 				}
             });
-
-            // ... (existing validation code remains unchanged)
-
         });
-    </script>
+    </script> -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			"use strict";
+		
+			document.querySelector('.login100-form').addEventListener('submit', function (e) {
+				e.preventDefault();
+		
+				var email = document.getElementsByName('email')[0].value;
+				var password = document.getElementsByName('pass')[0].value;
+		
+				var users = JSON.parse(localStorage.getItem('users')) || [];
+				var user = users.find(u => u.email === email && u.pass === password);
+		
+				if (user) {
+					// Store the user in sessionStorage
+					sessionStorage.setItem('currentUser', JSON.stringify(user));
+		
+					alert('Login successful!');
+					window.location.href = 'service-needed.html';
+				} else {
+					alert('Invalid credentials');
+				}
+			});
+		});
+	</script>
+	
 	
 
 	

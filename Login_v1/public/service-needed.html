@@ -46,7 +46,7 @@
 
                     <!-- Sports Dropdown -->
                     <div class="wrap-input100" id="sportsOptions" style="display:none;">
-                        <select class="input100">
+                        <select class="input100" id = "sportsOptions1">
                             <option value="">Select a Sport</option>
                             <option value="Football">Football</option>
                             <option value="Basketball">Basketball</option>
@@ -67,7 +67,7 @@
 
                     <!-- Instrument Dropdown, shown only when 'Instrument Tutoring' is selected -->
                     <div class="wrap-input100" id="instrumentOptions" style="display:none;">
-                        <select class="input100">
+                        <select class="input100" id="instrumentOptions1">
                              <option value="">Select an Instrument</option>
                              <option value="piano">Piano</option>
                              <option value="guitar">Guitar</option>
@@ -124,6 +124,51 @@
         };
         
     </script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+            //console.log(currentUser);
+
+            if (!currentUser) {
+                // Redirect to login page if no user is found in sessionStorage
+                window.location.href = 'index.html';
+            }
+
+            // Continue with your existing code
+
+            
+
+            document.getElementById("nextPageButton").onclick = function(){
+                if (document.getElementById("serviceSelection").value == "sports")
+                {
+                    currentUser['service-needed'] = document.getElementById("sportsOptions1").value;
+                }
+                else if (document.getElementById("serviceSelection").value == "music")
+                {
+                    if (document.getElementById("musicServiceSelection").value == "tutoring")
+                    {
+                        currentUser['service-needed'] = document.getElementById("instrumentOptions1").value;
+                    }
+                    else
+                    {
+                        currentUser['service-needed'] = document.getElementById("musicServiceSelection").value;
+                    }
+                }
+                else if (document.getElementById("serviceSelection").value == "academic")
+                {
+                    currentUser['service-needed'] = document.getElementById("academicOptions").value;
+                }
+                
+                //console.log(currentUser);
+                sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+                window.location.href = 'service-provided.html';
+            };
+        });
+    </script>
+
     
     
     <!-- ... existing scripts ... -->

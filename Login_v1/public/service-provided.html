@@ -46,7 +46,7 @@
 
                     <!-- Sports Dropdown -->
                     <div class="wrap-input100" id="sportsOptions" style="display:none;">
-                        <select class="input100">
+                        <select class="input100" id = "sportsOptions1">
                             <option value="">Select a Sport</option>
                             <option value="Football">Football</option>
                             <option value="Basketball">Basketball</option>
@@ -67,7 +67,7 @@
 
                     <!-- Instrument Dropdown, shown only when 'Instrument Tutoring' is selected -->
                     <div class="wrap-input100" id="instrumentOptions" style="display:none;">
-                        <select class="input100">
+                        <select class="input100" id="instrumentOptions1">
                              <option value="">Select an Instrument</option>
                              <option value="piano">Piano</option>
                              <option value="guitar">Guitar</option>
@@ -86,6 +86,9 @@
                             <option value="advising">Advising</option>
                             <!-- Add more academic options -->
                         </select>
+                    </div>
+                    <div class="container-login100-form-btn" style="text-align: center; padding-top: 20px;">
+                        <button id="nextPageButton1" class="login100-form-btn">Next Page</button>
                     </div>
                 </div>
             </div>
@@ -112,6 +115,46 @@
         }
     </script>
     
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+
+            if (!currentUser) {
+                // Redirect to login page if no user is found in sessionStorage
+                window.location.href = 'index.html';
+            }
+
+            document.getElementById("nextPageButton1").onclick = function(){
+                if (document.getElementById("serviceSelection").value == "sports")
+                {
+                    currentUser['service-provided'] = document.getElementById("sportsOptions1").value;
+                }
+                else if (document.getElementById("serviceSelection").value == "music")
+                {
+                    if (document.getElementById("musicServiceSelection").value == "tutoring")
+                    {
+                        currentUser['service-provided'] = document.getElementById("instrumentOptions1").value;
+                    }
+                    else
+                    {
+                        currentUser['service-provided'] = document.getElementById("musicServiceSelection").value;
+                    }
+                }
+                else if (document.getElementById("serviceSelection").value == "academic")
+                {
+                    currentUser['service-provided'] = document.getElementById("academicOptions").value;
+                }
+                
+                console.log(currentUser);
+                sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+                //window.location.href = 'matching.html';
+            };
+
+
+        });
+    </script>
+
     
     <!-- ... existing scripts ... -->
 </body>
