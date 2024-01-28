@@ -1,78 +1,89 @@
 <!DOCTYPE html>
-
 <html lang="en">
-    <head>
-        <title>Login V1</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->	
-        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<head>
+    <title>Login V1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
     <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-    <!--===============================================================================================-->	
-        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
     <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="css/util.css">
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    </head>
-    <body>
-        <div class="limiter">
-            <div class="container-login100">
-                <div class="wrap-login100">
-                    <div class="row align-items-center justify-content-center">
-                        <!-- Image Container -->
-                        <div class="col-md-6 text-center">
-                            <div class="login100-pic js-tilt" data-tilt>
-                                <img src="images/img-01.png" alt="IMG" style="height: 150px;width: 150px;">
-                            </div>
-                        </div>
-    
-                        <!-- Button Container -->
-                        <div class="col-md-6">
-                            <div class="container-login100-form-btn" style="text-align: center; padding-top: 20px;">
-                                <button id="generate" class="login100-form-btn">Generate Match</button>
-                            </div>
-    
-                            <!-- Message Container on the right side -->
-                            <div id="messageContainer" class="container-login100-form-btn" style="text-align: center; padding-top: 20px;"></div>
-                        </div>
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="row align-items-center justify-content-center">
+                <!-- Image Container -->
+                <div class="col-md-6 text-center">
+                    <div class="login100-pic js-tilt" data-tilt>
+                        <img src="images/img-01.png" alt="IMG" style="height: 150px;width: 150px;">
                     </div>
+                </div>
+
+                <!-- Button Container -->
+                <div class="col-md-6">
+                    <div class="container-login100-form-btn" style="text-align: center; padding-top: 20px;">
+                        <button id="generate" class="login100-form-btn">Generate Match</button>
+                    </div>
+
+                    <!-- Message Container on the right side -->
+                    <div id="messageContainer" class="container-login100-form-btn" style="text-align: center; padding-top: 20px;"></div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- Bootstrap JavaScript -->
-        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-        <script src="vendor/bootstrap/js/popper.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-        
-        <!-- Other scripts -->
+<!-- Bootstrap JavaScript -->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var currentUser1 = JSON.parse(sessionStorage.getItem('currentUser'));
-                var currentUser2 = JSON.parse(localStorage.getItem('users'));
+<!-- Other scripts -->
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 
-                document.getElementById("generate").onclick = function(){
-                    //console.log(currentUser1);
-                    var mergedUsers = [currentUser1, ...currentUser2];
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById("generate").onclick = function () {
+            sendEmail();
+            document.getElementById("messageContainer").innerText = "We found you a match!! You will receive an email with who you matched, and then you can accept or reject the offer.";
 
-                    console.log(mergedUsers);
+        };
 
-                    document.getElementById("messageContainer").innerText = "We found you a match!! You will recieve and email with who you matched and then you can accept or reject the offer.";
+        function sendEmail() {
+            // Email sending
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "selimdaccache0@gmail.com",
+                Password: "47130EC46DCD69E746D26C598176AD9FC0F6",
+                To: 'daccacheselim@gmail.com',
+                From: "selimdaccache0@gmail.com",
+                Subject: "Sending Email using javascript",
+                Body: "Well that was easy!!",
+            })
+                .then(function (message) {
+                    console.log(message);
+                })
+                .catch(function (error) {
+                    console.error('Error sending email:', error);
+                    alert("Failed to send email");
+                });
+        }
+    });
+</script>
 
-                };
-
-            });
-
-        </script>
-    </body>
-    </html>
-    
+</body>
+</html>
